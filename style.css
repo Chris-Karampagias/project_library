@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "Anton-Regular";
+  src: url(Anton-Regular.ttf);
+}
+
+:root {
+  font-family: "Anton-Regular", "Times New Roman", Times, serif;
+  font-size: 32px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  border-radius: 15px;
+}
+
+.header {
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(39, 106, 183, 0.704);
+  padding: 0.5rem;
+}
+
+.header .username {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.header button {
+  font-size: 0.7rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 3px 5px rgba(0, 0, 0, 0.218);
+  color: rgba(39, 106, 183, 0.704);
+}
