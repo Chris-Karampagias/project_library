@@ -11,10 +11,31 @@
     <script src="script.js" defer></script>
     <div class="header">
       <div class="username">Chris</div>
-      <button id="add-button">New Book</button>
+      <button class="add-button">New Book</button>
       <button class="log-out">Log Out</button>
     </div>
     <div class="main-container">
+      <dialog>
+        <form method="dialog">
+          <div>
+            <label for="book-name-form">Book Name:</label>
+            <input type="text" id="book-name-form" name="bookTitle">
+          </div>
+          <div>
+            <label for="book-author-form">Book Author:</label>
+            <input type="text" id="book-author-form" name="bookAuthor">
+          </div>
+          <div>
+            <label for="book-pages-form">No. Of Pages:</label>
+            <input type="text" id="book-pages-form" name="bookPages">
+          </div>
+          <div>
+            <label for="book-status-form">Book Status:</label>
+            <input type="text" id="book-status-form" name="bookStatus">
+          </div>
+          <button class="form-button">Add Book</button>
+        </form>
+      </dialog>
       <div class="book">
         <img src="fonts&images/book-cover-placeholder.png"></img>
         <div class="book-details">
