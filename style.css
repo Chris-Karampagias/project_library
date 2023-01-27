@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Anton-Regular";
-  src: url(Anton-Regular.ttf);
+  src: url(fonts&images/Anton-Regular.ttf);
 }
 
 :root {
   font-family: "Anton-Regular", "Times New Roman", Times, serif;
-  font-size: 32px;
+  font-size: 25px;
 }
 
 body {
@@ -17,6 +17,7 @@ body {
 button {
   font-family: inherit;
   border-radius: 15px;
+  cursor: pointer;
 }
 
 .header {
@@ -35,7 +36,54 @@ button {
 .header button {
   font-size: 0.7rem;
   border: none;
-  cursor: pointer;
-  box-shadow: 3px 5px rgba(0, 0, 0, 0.218);
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.218);
+  color: rgba(39, 106, 183, 0.704);
+}
+
+.main-container {
+  font-size: 0.8rem;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid rgba(39, 106, 183, 0.704);
+  height: fit-content;
+  padding: 10px 1rem;
+  border-radius: 10px;
+  box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.218);
+}
+
+.book > img {
+  height: 200px;
+  width: auto;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.book-remove,
+.book-change-status {
+  border: none;
+  font-size: 0.9rem;
+  background-color: rgba(207, 207, 207, 0.393);
+}
+
+.book-remove {
+  color: rgb(248, 29, 29);
+}
+
+.text {
+  font-size: 0.8rem;
   color: rgba(39, 106, 183, 0.704);
 }
