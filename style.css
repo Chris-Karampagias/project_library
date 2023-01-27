@@ -131,6 +131,7 @@ form div {
 }
 
 dialog::backdrop {
+  backdrop-filter: blur(4px);
   background-color: black;
   opacity: 0.6;
 }
