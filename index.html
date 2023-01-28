@@ -32,16 +32,20 @@
           </div>
           <div>
             <label for="book-pages-form">No. Of Pages:</label>
-            <input type="text" id="book-pages-form" name="bookPages" required />
+            <input
+              type="text"
+              id="book-pages-form"
+              name="bookPages"
+              pattern="[0-9]*"
+              required
+            />
           </div>
           <div>
             <label for="book-status-form">Book Status:</label>
-            <input
-              type="text"
-              id="book-status-form"
-              name="bookStatus"
-              required
-            />
+            <select name="status" id="book-author-form">
+              <option value="Not Read">Not Read</option>
+              <option value="Read">Read</option>
+            </select>
           </div>
         </form>
         <div class="form-buttons">
@@ -49,6 +53,31 @@
           <button form="form" class="form-submit-button">Add Book</button>
         </div>
       </dialog>
+      <div class="book">
+        <img src="fonts&images/book-cover-placeholder.png" />
+        <div class="book-details">
+          <div>
+            <span class="text">TITLE:</span>
+            <div>sdcsd</div>
+          </div>
+          <div>
+            <span class="text">AUTHOR:</span>
+            <div>sdsdv</div>
+          </div>
+          <div>
+            <span class="text">PAGES:</span>
+            <div>sdvsd</div>
+          </div>
+          <div>
+            <span class="text">STATUS:</span>
+            <div>sdvsvd</div>
+          </div>
+        </div>
+        <div class="buttons-container">
+          <button class="book-change-status">Change Status</button>
+          <button class="book-remove">Remove</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
