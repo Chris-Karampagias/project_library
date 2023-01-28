@@ -10,45 +10,45 @@
   <body>
     <script src="script.js" defer></script>
     <div class="header">
-      <div class="username">Chris</div>
+      <div class="username">Chris's Library</div>
       <button class="add-button">New Book</button>
       <button class="log-out">Log Out</button>
     </div>
     <div class="main-container">
       <dialog>
-        <form method="dialog">
+        <form id="form" method="dialog">
           <div>
             <label for="book-name-form">Book Name:</label>
-            <input type="text" id="book-name-form" name="bookTitle">
+            <input type="text" id="book-name-form" name="bookTitle" required />
           </div>
           <div>
             <label for="book-author-form">Book Author:</label>
-            <input type="text" id="book-author-form" name="bookAuthor">
+            <input
+              type="text"
+              id="book-author-form"
+              name="bookAuthor"
+              required
+            />
           </div>
           <div>
             <label for="book-pages-form">No. Of Pages:</label>
-            <input type="text" id="book-pages-form" name="bookPages">
+            <input type="text" id="book-pages-form" name="bookPages" required />
           </div>
           <div>
             <label for="book-status-form">Book Status:</label>
-            <input type="text" id="book-status-form" name="bookStatus">
+            <input
+              type="text"
+              id="book-status-form"
+              name="bookStatus"
+              required
+            />
           </div>
-          <button class="form-button">Add Book</button>
         </form>
-      </dialog>
-      <div class="book">
-        <img src="fonts&images/book-cover-placeholder.png"></img>
-        <div class="book-details">
-          <div class="book-title"><span class="text">Title:</span> The Power Of NO</div>
-          <div class="book-author"><span class="text">Author:</span> ERGEG</div>
-          <div class="book-pages"><span class="text">Pages:</span> 256</div>
-          <div class="book-status"><span class="text">Status:</span> Read</div>
-        </div> 
-        <div class="buttons-container">
-          <button class="book-change-status">Change Status</button>
-          <button class="book-remove">Remove</button>
+        <div class="form-buttons">
+          <button class="close-modal">Close</button>
+          <button form="form" class="form-submit-button">Add Book</button>
         </div>
-      </div>
+      </dialog>
     </div>
   </body>
 </html>

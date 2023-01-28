@@ -45,8 +45,7 @@ button {
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-between;
+  gap: 2rem;
   padding: 1rem 2rem;
 }
 
@@ -58,6 +57,12 @@ button {
   padding: 10px 1rem;
   border-radius: 10px;
   box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.218);
+}
+
+.book-details div {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 .book > img {
@@ -75,11 +80,13 @@ button {
 .book-remove,
 .book-change-status {
   border: none;
+  padding: 10px;
   font-size: 0.9rem;
   background-color: rgba(207, 207, 207, 0.393);
 }
 
-.book-remove {
+.book-remove,
+.close-modal {
   color: rgb(248, 29, 29);
 }
 
@@ -109,9 +116,14 @@ form label {
 }
 
 form input {
-  border: 3px solid black;
-  border-radius: 10px;
+  font-family: inherit;
+  border: 2px solid rgba(0, 0, 0, 0.528);
+  border-radius: 7px;
   font-size: 0.7rem;
+}
+
+form input:focus {
+  background-color: rgba(209, 209, 209, 0.234);
 }
 
 form div {
@@ -123,7 +135,15 @@ form div {
   height: 100%;
 }
 
-.form-button {
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.form-submit-button,
+.close-modal {
   font-size: 0.9rem;
   width: 50%;
   align-self: center;
