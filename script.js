@@ -3,7 +3,9 @@ const mainContainer = document.querySelector(".main-container");
 const newBookButton = document.querySelector(".add-button");
 const closeModal = document.querySelector(".close-modal");
 const inputs = document.querySelectorAll("input");
+const selectForm = document.querySelector("select");
 const formSubmitButton = document.querySelector(".form-submit-button");
+const bookStatusForm = document.getElementById("book-status-form");
 const bookLibrary = [];
 
 function book(title, author, pages, status) {
@@ -33,6 +35,7 @@ function getFormDetails() {
   inputs.forEach((input) => {
     array.push(input.value);
   });
+  array.push(selectForm.value);
   return array;
 }
 
@@ -108,3 +111,9 @@ function addBookToLibrary() {
 }
 
 formSubmitButton.addEventListener("click", addBookToLibrary);
+
+function displayBooks(bookLibrary) {
+  for (const book in bookLibrary) {
+    createAndAppendElement(book);
+  }
+}
