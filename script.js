@@ -66,6 +66,9 @@ function createAndAppendElement(book) {
   buttonsContainer.classList.add("buttons-container");
   const changeStatusButton = document.createElement("button");
   const removeBookButton = document.createElement("button");
+  removeBookButton.addEventListener("click", (e) => {
+    deleteBookFromLibrary(e);
+  });
   changeStatusButton.classList.add("book-change-status");
   changeStatusButton.textContent = "Change Status";
   removeBookButton.textContent = "Remove";
@@ -75,6 +78,27 @@ function createAndAppendElement(book) {
   mainContainer.append(bookContainer);
 }
 
+function getDeletedBookIndex(e) {
+  const title =
+    e.target.parentElement.previousElementSibling.firstElementChild
+      .lastElementChild.textContent;
+  const index = bookLibrary.findIndex((obj) => obj.title === title);
+  return index;
+}
+
+function deleteFromArray(index) {
+  bookLibrary.splice(index, 1);
+}
+
+function deleteFromDOM(e) {
+  e.target.parentElement.parentElement.remove();
+}
+
+function deleteBookFromLibrary(e) {
+  const index = getDeletedBookIndex(e);
+  deleteFromArray(index);
+  deleteFromDOM(e);
+}
 function addBookToLibrary() {
   const info = getFormDetails();
   const newBook = createBook(info);
