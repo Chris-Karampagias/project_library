@@ -20,15 +20,6 @@ function resetInputFields() {
   });
 }
 
-newBookButton.addEventListener("click", () => {
-  modal.showModal();
-});
-
-closeModal.addEventListener("click", () => {
-  modal.close();
-  resetInputFields();
-});
-
 function getFormDetails() {
   const array = [];
   inputs.forEach((input) => {
@@ -45,6 +36,51 @@ function createBook(info) {
 
 function addToArray(newBook) {
   bookLibrary.push(newBook);
+}
+
+function createAndAppendElement(book) {
+  const bookContainer = document.createElement("div");
+  bookContainer.classList.add("book");
+  const image = document.createElement("img");
+  image.setAttribute("src", "fonts&images/book-cover-placeholder.png");
+  const bookDetails = document.createElement("div");
+  bookDetails.classList.add("book-details");
+  for (const bookDetail in book) {
+    const div = document.createElement("div");
+    const span = document.createElement("span");
+    span.textContent = `${bookDetail.toUpperCase()}:`;
+    const childDiv = document.createElement("div");
+    childDiv.textContent = book[bookDetail];
+    span.classList.add("text");
+    div.append(span, childDiv);
+    bookDetails.append(div);
+  }
+  const buttonsContainer = document.createElement("div");
+  buttonsContainer.classList.add("buttons-container");
+  const changeStatusButton = document.createElement("button");
+  changeStatusButton.addEventListener("click", changeStatus);
+  const removeBookButton = document.createElement("button");
+  removeBookButton.addEventListener("click", (e) => {
+    deleteBookFromLibrary(e);
+  });
+  changeStatusButton.classList.add("book-change-status");
+  changeStatusButton.textContent = "Change Status";
+  removeBookButton.textContent = "Remove";
+  removeBookButton.classList.add("book-remove");
+  buttonsContainer.append(changeStatusButton, removeBookButton);
+  bookContainer.append(image, bookDetails, buttonsContainer);
+  mainContainer.append(bookContainer);
+}
+
+function addBookToLibrary() {
+  const info = getFormDetails();
+  if (info.includes("") || Number(info[2]) != info[2]) {
+    return;
+  }
+  const newBook = createBook(info);
+  addToArray(newBook);
+  createAndAppendElement(newBook);
+  setTimeout(resetInputFields, 1000);
 }
 
 function getDeletedBookIndex(e) {
@@ -69,48 +105,23 @@ function deleteBookFromLibrary(e) {
   deleteFromDOM(e);
 }
 
-function createAndAppendElement(book) {
-  const bookContainer = document.createElement("div");
-  bookContainer.classList.add("book");
-  const image = document.createElement("img");
-  image.setAttribute("src", "fonts&images/book-cover-placeholder.png");
-  const bookDetails = document.createElement("div");
-  bookDetails.classList.add("book-details");
-  for (const bookDetail in book) {
-    const div = document.createElement("div");
-    const span = document.createElement("span");
-    span.textContent = `${bookDetail.toUpperCase()}:`;
-    const childDiv = document.createElement("div");
-    childDiv.textContent = book[bookDetail];
-    span.classList.add("text");
-    div.append(span, childDiv);
-    bookDetails.append(div);
+function getCurrentStatus(e) {
+  const currentStatus =
+    e.target.parentElement.previousElementSibling.lastElementChild
+      .lastElementChild.textContent;
+  return currentStatus;
+}
+
+function changeStatus(e) {
+  const currentStatus = getCurrentStatus(e);
+  if (currentStatus.includes("Not")) {
+    e.target.parentElement.previousElementSibling.lastElementChild.lastElementChild.textContent =
+      "Read";
+  } else {
+    e.target.parentElement.previousElementSibling.lastElementChild.lastElementChild.textContent =
+      "Not Read";
   }
-  const buttonsContainer = document.createElement("div");
-  buttonsContainer.classList.add("buttons-container");
-  const changeStatusButton = document.createElement("button");
-  const removeBookButton = document.createElement("button");
-  removeBookButton.addEventListener("click", (e) => {
-    deleteBookFromLibrary(e);
-  });
-  changeStatusButton.classList.add("book-change-status");
-  changeStatusButton.textContent = "Change Status";
-  removeBookButton.textContent = "Remove";
-  removeBookButton.classList.add("book-remove");
-  buttonsContainer.append(changeStatusButton, removeBookButton);
-  bookContainer.append(image, bookDetails, buttonsContainer);
-  mainContainer.append(bookContainer);
 }
-
-function addBookToLibrary() {
-  const info = getFormDetails();
-  const newBook = createBook(info);
-  addToArray(newBook);
-  createAndAppendElement(newBook);
-  setTimeout(resetInputFields, 1000);
-}
-
-formSubmitButton.addEventListener("click", addBookToLibrary);
 
 function displayBooks(array) {
   array.forEach((item) => {
@@ -118,6 +129,17 @@ function displayBooks(array) {
   });
 }
 
+formSubmitButton.addEventListener("click", addBookToLibrary);
+
 window.addEventListener("load", () => {
   displayBooks(bookLibrary);
+});
+
+newBookButton.addEventListener("click", () => {
+  modal.showModal();
+});
+
+closeModal.addEventListener("click", () => {
+  modal.close();
+  resetInputFields();
 });
