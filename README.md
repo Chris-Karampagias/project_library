@@ -1,1 +1,1 @@
-# project_library
+This is the library project from TheOdinProject's Full Stack JavaScript curriculum. It's main functions are adding a book to the library and displaying it on screen, deleting a book from the library and also deleting it from the user's screen, changing a book's status to "Read" or "Not Read" after it's been added to the library.
