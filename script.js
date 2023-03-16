@@ -7,11 +7,12 @@ const selectForm = document.getElementById("book-status-form");
 const formSubmitButton = document.querySelector(".form-submit-button");
 const bookLibrary = [];
 
-function Book(title, author, pages, status) {
+class Book{
+  constructor(title, author, pages, status){
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.status = status;
+  this.status = status;}
 }
 
 function resetInputFields() {
