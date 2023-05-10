@@ -1,18 +1,21 @@
 const modal = document.querySelector("dialog");
+const form = document.querySelector("form");
 const mainContainer = document.querySelector(".main-container");
 const newBookButton = document.querySelector(".add-button");
 const closeModal = document.querySelector(".close-modal");
 const inputs = document.querySelectorAll("input");
 const selectForm = document.getElementById("book-status-form");
 const formSubmitButton = document.querySelector(".form-submit-button");
+const pages = document.getElementById("book-pages-form");
 const bookLibrary = [];
 
-class Book{
-  constructor(title, author, pages, status){
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;}
+class Book {
+  constructor(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
 }
 
 function resetInputFields() {
@@ -20,6 +23,24 @@ function resetInputFields() {
     input.value = "";
   });
 }
+
+pages.addEventListener("input", () => {
+  if (pages.validity.rangeUnderflow) {
+    pages.setCustomValidity(`Minimum ${pages.min} pages!`);
+  } else if (pages.validity.rangeOverflow) {
+    pages.setCustomValidity(`Maximum ${pages.max} pages!`);
+  } else {
+    pages.setCustomValidity("");
+  }
+});
+
+form.addEventListener("submit", (e) => {
+  if (!pages.validity.valid) {
+    e.preventDefault();
+  } else {
+    addBookToLibrary();
+  }
+});
 
 function getFormDetails() {
   const array = [];
@@ -129,8 +150,6 @@ function displayBooks(array) {
     createAndAppendElement(item);
   });
 }
-
-formSubmitButton.addEventListener("click", addBookToLibrary);
 
 window.addEventListener("load", () => {
   displayBooks(bookLibrary);

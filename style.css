@@ -117,6 +117,7 @@ form label {
 
 form input,
 form select {
+  box-sizing: border-box;
   font-family: inherit;
   border: 2px solid rgba(0, 0, 0, 0.528);
   border-radius: 7px;
@@ -164,4 +165,19 @@ dialog::backdrop {
   backdrop-filter: blur(4px);
   background-color: black;
   opacity: 0.6;
+}
+
+input:required {
+  outline: none;
+  border: 5px solid rgb(2, 49, 91);
+}
+
+input:invalid {
+  outline: none;
+  border: 5px solid red;
+}
+
+input:valid {
+  outline: none;
+  border: 5px solid green;
 }

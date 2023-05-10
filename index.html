@@ -33,10 +33,11 @@
           <div>
             <label for="book-pages-form">No. Of Pages:</label>
             <input
-              type="text"
+              type="number"
               id="book-pages-form"
               name="bookPages"
-              pattern="[0-9]*"
+              min="50"
+              max="1000"
               required
             />
           </div>
